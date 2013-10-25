@@ -1,8 +1,12 @@
 module OpenActions
   class OpenAction
     # @private
+    def self.demodulize(name)
+      name.split('::').last
+    end
+
     def self.inherited(klass)
-      OpenActions.actions[klass.name] = klass
+      OpenActions.actions[demodulize(klass.to_s)] = klass
     end
 
     # @return [Hash] Accumulated config for this action type.
