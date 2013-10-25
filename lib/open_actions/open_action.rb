@@ -29,14 +29,6 @@ module OpenActions
       config[:leader_fields] = fs.to_a
     end
 
-    # Declare the description of the action type that will be shown in the list
-    # of action types on Causes.
-    # @example
-    #   "<strong>Watching a video</strong> to unlock a donation from a sponsor."
-    def self.leader_description(str)
-      config[:leader_description] = str
-    end
-
     # Declare the structure of the form shown to users who are taking the
     # action. The block is evaluated in the context of an OpenActions::FormSpec
     # object.

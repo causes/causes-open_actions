@@ -13,6 +13,7 @@ module OpenActions
 
     copy_strings do
       noun 'tweet'
+      leader_description '<strong>Tweet at someone</strong> to influence them.'
     end
   end
 end
