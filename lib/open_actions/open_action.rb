@@ -42,10 +42,35 @@ module OpenActions
       config[:action_taker_fields] = fs.to_a
     end
 
+    # Declare strings of copy to be shown in the interface. The block is
+    # evaluated in the context of an OpenActions::OpenAction::CopyDefinition
+    # object.
+    # TODO: Document which strings are needed.
+    def self.copy_strings(&block)
+      cd = CopyDefinition.new
+      cd.instance_eval(&block)
+      config[:copy_strings] = cd.to_h
+    end
+
     def validate_data(data, errors)
     end
 
     def take_action!(data)
+    end
+
+    # @private
+    class CopyDefinition
+      def initialize
+        @copy_strings = {}
+      end
+
+      def method_missing(name, str, *)
+        @copy_strings[name] = str
+      end
+
+      def to_h
+        @copy_strings
+      end
     end
   end
 end

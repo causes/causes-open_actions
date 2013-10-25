@@ -10,5 +10,9 @@ module OpenActions
     action_taker_fields do
       text_area  :message_text
     end
+
+    copy_strings do
+      noun 'tweet'
+    end
   end
 end

@@ -42,5 +42,23 @@ module OpenActions
         ])
       end
     end
+
+    describe '.copy_strings' do
+      it 'records arbitrary strings of copy' do
+        klass = Class.new(OpenAction) do
+          copy_strings do
+            verb 'sing'
+            verbed 'sang'
+            quality 'poor'
+          end
+        end
+
+        klass.config[:copy_strings].must_equal(
+          verb: 'sing',
+          verbed: 'sang',
+          quality: 'poor'
+        )
+      end
+    end
   end
 end
