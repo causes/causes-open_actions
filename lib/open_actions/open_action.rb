@@ -2,7 +2,7 @@ module OpenActions
   class OpenAction
     # @private
     def self.inherited(klass)
-      OpenActions.actions << klass
+      OpenActions.actions[klass.name] = klass
     end
 
     # @return [Hash] Accumulated config for this action type.

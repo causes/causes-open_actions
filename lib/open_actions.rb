@@ -1,7 +1,7 @@
 module OpenActions
-  # @returns [Array] All subclasses of OpenActions::OpenAction.
+  # @returns [Hash] All subclasses of OpenActions::OpenAction.
   def self.actions
-    @actions ||= []
+    @actions ||= {}
   end
 end
 
