@@ -52,10 +52,27 @@ module OpenActions
       config[:copy_strings] = cd.to_h
     end
 
+    # If an action needs to validate its leader fields or action-taker fields,
+    # it can add errors in this method.
+    # @param [Hash] data Data about the action, in the same format as
+    #   `take_action!`'s `data` parameter.
+    # @param [ActiveModel::Errors] errors An object to add errors to.
     def validate_data(data, errors)
+      # No-op by default -- subclasses should override.
     end
 
+    # This method is given a data hash (with the same format as take_action!)
+    # and an empty ActiveModel::Errors object. If an action needs to validate
+    # its leader fields or action-taker fields, it can add errors in this
+    # method.
+    # @param [Hash] data Data about the action. This hash has keys for:
+    #   * each leader_field and action_taker_field. If there's a field repeated
+    #     between the two sets, we only pass in the action-taker value.
+    #   * each user_auth provider. For example, if the action contains
+    #     `user_auth :twitter`, the data hash will have a `:twitter` key whose
+    #     data is a hash of twitter-specific auth information (?).
     def take_action!(data)
+      # No-op by default -- subclasses should override.
     end
 
     # @private
