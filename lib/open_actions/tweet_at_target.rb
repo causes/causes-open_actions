@@ -15,5 +15,9 @@ module OpenActions
       noun 'tweet'
       leader_description '<strong>Tweet at someone</strong> to influence them.'
     end
+
+    def take_action!(data)
+      data[:twitter].update "@#{data[:recipient]} #{data[:message]}"
+    end
   end
 end
