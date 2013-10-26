@@ -4,11 +4,11 @@ module OpenActions
 
     leader_fields do
       text_field :recipient
-      text_area  :message_text
+      text_area  :message
     end
 
     action_taker_fields do
-      text_area  :message_text
+      text_area  :message
     end
 
     copy_strings do
